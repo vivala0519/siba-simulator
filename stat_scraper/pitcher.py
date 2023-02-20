@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Chrome()
 
 # 연도범위 동안 팀리스트 스크래핑 후 DB에 저장
-yearScope = range(2019, 2021)
+yearScope = range(2019, 2022)
 team_List = ['SK', 'NC', 'kt', 'KIA', '히어로즈', '한화', 'LG', '두산', '삼성', '롯데']
 for year in yearScope:
     for team in team_List:
