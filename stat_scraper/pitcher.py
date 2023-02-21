@@ -6,6 +6,7 @@ driver = webdriver.Chrome()
 # 연도범위 동안 팀리스트 스크래핑 후 DB에 저장
 yearScope = range(2019, 2022)
 team_List = ['SK', 'NC', 'kt', 'KIA', '히어로즈', '한화', 'LG', '두산', '삼성', '롯데']
+
 for year in yearScope:
     for team in team_List:
         url = 'http://www.statiz.co.kr/stat.php?opt=0&sopt=0&re=1&ys=%d&ye=%d&se=0&te=%s' \
