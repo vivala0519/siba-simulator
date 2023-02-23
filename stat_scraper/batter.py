@@ -9,7 +9,7 @@ data = {}
 
 driver = webdriver.Chrome()
 
-# 연도범위 동안 팀리스트 스크래핑 후 DB에 저장
+# 연도범위 동안 팀리스트 스크래핑 후 json파일로 저장
 yearScope = range(1982, 2023)
 team_List = ['SK', 'SSG', '삼성', 'NC', '한화', 'LG', '롯데', 'KIA', 'kt', '히어로즈', '두산', '해태', '현대', '청보',
              '삼미', 'MBC', 'OB', '태평양', '빙그레', '쌍방울']
