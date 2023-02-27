@@ -5,11 +5,12 @@ import json
 
 file_path = './batter.json'
 
-data = {}
+with open(file_path, 'r', encoding='utf-8') as file:
+    data = json.load(file)
 
 driver = webdriver.Chrome()
 
-# 연도범위 동안 팀리스트 스크래핑 후 json파일로 저장
+# 연도범위 동안 팀리스트 스크래핑 후 json으로 저장
 yearScope = range(1982, 2023)
 team_List = ['SK', 'SSG', '삼성', 'NC', '한화', 'LG', '롯데', 'KIA', 'kt', '히어로즈', '두산', '해태', '현대', '청보',
              '삼미', 'MBC', 'OB', '태평양', '빙그레', '쌍방울']
@@ -48,17 +49,17 @@ for year in yearScope:
             Dead_Ball = item.find_element(By.CSS_SELECTOR, 'td:nth-child(18)').text  # 사구
             one_hit = int(total_hit) - int(double_hit) - int(triple_hit) - int(home_run)  # 1루타
 
-            doc = {
-                'name': name, 'position': position, 'avg': avg, 'obp': obp, 'slg': slg, 'total_hit': total_hit,
-                'double_hit': double_hit, 'triple_hit': triple_hit, 'home_run': home_run, 'BB': BB, 'SB': SB,
-                'Dead_Ball': Dead_Ball, 'one_hit': one_hit, 'year': year, 'team': team
-            }
+            # doc = {
+            #     'name': name, 'position': position, 'avg': avg, 'obp': obp, 'slg': slg, 'total_hit': total_hit,
+            #     'double_hit': double_hit, 'triple_hit': triple_hit, 'home_run': home_run, 'BB': BB, 'SB': SB,
+            #     'Dead_Ball': Dead_Ball, 'one_hit': one_hit, 'year': year, 'team': team
+            # }
             data[year].append({
                 'name': name, 'team': team, 'position': position, 'avg': avg, 'obp': obp, 'slg': slg, 'total_hit': total_hit,
                 'double_hit': double_hit, 'triple_hit': triple_hit, 'home_run': home_run, 'BB': BB, 'SB': SB,
                 'Dead_Ball': Dead_Ball, 'one_hit': one_hit,
             })
-            
+            # db.kbo_batter_stat.insert_one(doc)
             print(year, team, name, '저장 완료')
 
             with open(file_path, 'w', encoding='utf-8') as file:
